@@ -107,7 +107,7 @@ func Download(dir string, r Repository) error {
 			_ = Logger.SubInfof("Updating %s...", filepath.Base(dir))
 		}
 
-		e = CleanSlate(dir, true, "", r.BranchName())
+		e = CleanSlate(dir, true, "origin", r.BranchName())
 	}
 
 	if e != nil {
