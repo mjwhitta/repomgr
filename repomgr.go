@@ -149,7 +149,7 @@ func RollBack(dir string, remote string, branch ...string) error {
 	}
 
 	for e == nil {
-		e = git.ResetHard(dir, remote, branch[0]+"~1")
+		e = git.ResetHard(dir, "", branch[0]+"~1")
 	}
 
 	if e = git.Push(dir, true, remote); e != nil {
