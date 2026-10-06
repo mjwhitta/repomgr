@@ -58,13 +58,17 @@ func CleanSlate(
 // DirName will return a directory name in the form of
 // <owner>.<name>[.branch].
 func DirName(r Repository) string {
+	var branch string
 	var name string
 	var owner string
 
 	_, owner, name, _ = git.RepoInfo(r.CloneURL())
 
-	if r.BranchName() != "" {
-		name += "." + r.BranchName()
+	if branch = r.BranchName(); branch != "" {
+		branch = strings.ReplaceAll(branch, "/", "__")
+		branch = strings.ReplaceAll(branch, "\\", "__")
+
+		name += "." + branch
 	}
 
 	return owner + "." + name

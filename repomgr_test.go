@@ -90,6 +90,16 @@ func TestDirName(t *testing.T) {
 		URL:    "git@github.com:mjwhitta/repomgr.git",
 	}
 	assert.Equal(t, "mjwhitta.repomgr.main", repomgr.DirName(r))
+
+	r = &repomgr.Repo{
+		Branch: "mw/feature/name",
+		URL:    "git@github.com:mjwhitta/repomgr.git",
+	}
+	assert.Equal(
+		t,
+		"mjwhitta.repomgr.mw__feature__name",
+		repomgr.DirName(r),
+	)
 }
 
 func TestDownloadAll(t *testing.T) {
